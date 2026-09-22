@@ -1,0 +1,39 @@
+Active Directory Password Compliance Checker - Requirements
+===========================================================
+
+1. Input Data
+
+   1.1. A CSV file containing user accounts, their passwords and the number of
+        days since each password was last changed. The data set shall include
+        both compliant passwords and weak credentials.
+
+   1.2. A file containing the list of substrings that are not permitted in
+        passwords.
+
+2. Functional Requirements
+
+   2.1. The script shall use the CSV account file as its data source, including
+        user names, passwords and the number of days since the last password
+        change.
+
+   2.2. The script shall provide a command-line interface in which the operator
+        enters an account name. The script shall then display the password
+        associated with that account and indicate whether it is compliant with
+        the password policy:
+          - compliant passwords shall be reported in green;
+          - non-compliant passwords shall be reported in red.
+
+   2.3. The script shall display when the password was last changed. If the
+        password is older than 50 days, a warning indicating that the password
+        must be updated shall be displayed in orange (dark yellow, the closest
+        color available in the PowerShell console).
+
+3. Password Policy
+
+   A password is considered compliant only if it meets all of the following
+   criteria:
+     - it contains at least 10 characters;
+     - it contains at least 5 digits;
+     - it contains at least 5 letters;
+     - it does not contain any of the substrings listed in the forbidden
+       substrings file.
